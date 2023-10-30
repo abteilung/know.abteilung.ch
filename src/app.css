@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	body {
+		@apply font-sans antialiased text-base;
+	}
+
+	.fade-in {
+		animation: fadeIn 0.5s forwards;
+		animation-delay: 0.2s;
+	}
+
+	[data-svelte-transition='scale'] {
+		animation: scaleUp 0.5s forwards;
+	}
+	@keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+
+	@keyframes scaleUp {
+		0% {
+			transform: scale(0);
+		}
+		100% {
+			transform: scale(1);
+		}
+	}
+
+	.sectionpadding {
+		@apply py-24;
+	}
+	/* .capital {
+		@apply first-letter:float-left first-letter:text-6xl first-letter:pr-4 first-letter:font-black first-letter:text-primary-muted;
+	} */
+
+	.lead {
+		@apply mb-4 text-2xl;
+	}
+
+	.grid {
+		@apply gap-[20px] lg:gap-[30px] xl:gap-[40px] 2xl:gap-[50px];
+	}
+
+	main p {
+		@apply pb-1 md:pb-2;
+	}
+
+	#topnav {
+		@apply fixed top-0 transition-all duration-500 ease-in-out border-none;
+		inset-inline-start: 0px;
+		inset-inline-end: 0px;
+		z-index: 999;
+		background-color: transparent;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	#topnav.offscreen {
+		@apply bg-black bg-opacity-100 shadow-md;
+	}
+
+	h1,
+	.h1,
+	h2.h1,
+	h3.h1,
+	h4.h1 {
+		@apply mb-2 text-4xl font-normal xl:mb-4 lg:text-6xl 2xl:text-8xl;
+		@apply leading-tight;
+	}
+
+	header h1 {
+		@apply md:text-6xl 2xl:text-8xl;
+	}
+
+	h2,
+	.h2,
+	h1.h2,
+	h4.h2 {
+		@apply mb-2 text-2xl font-bold leading-normal 2xl:text-3xl;
+	}
+
+	h3,
+	.h3,
+	h1.h3,
+	h2.h3,
+	.h4.h3 {
+		@apply text-xl font-normal 2xl:text-2xl;
+	}
+
+	h4,
+	.h4,
+	h1.h4,
+	h2.h4,
+	h3.h4 {
+		@apply text-xl leading-tight;
+	}
+	b,
+	strong {
+		@apply font-bold;
+	}
+
+	pre {
+		@apply text-[11px];
+	}
+}
