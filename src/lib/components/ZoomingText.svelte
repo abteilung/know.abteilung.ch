@@ -69,7 +69,9 @@
 				let lastNode;
 
 				words.forEach((word, index) => {
-					if (/[.,;:]$/.test(word) && lastNode) {
+					// Check if the word is the last in the sequence and ends with punctuation
+					const isLastWordWithPunct = index === words.length - 1 && /[.,;:]$/.test(word);
+					if (!isLastWordWithPunct && /[.,;:]$/.test(word) && lastNode) {
 						const punctuation = word.slice(-1);
 						word = word.slice(0, -1);
 						lastNode.textContent += punctuation;
