@@ -1,5 +1,4 @@
 import { Directus } from '@directus/sdk';
-import 'dotenv/config';
 
 const directus = new Directus(process.env.VITE_DIRECTUS_URL);
 
