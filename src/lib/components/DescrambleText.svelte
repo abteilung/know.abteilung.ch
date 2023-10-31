@@ -4,8 +4,8 @@
 	let descrambledWords = [];
 	const text = 'Abteilung für Gestaltung GHBM';
 	const words = text.split(' ');
-	let durationPerChar = 120; // Total duration for each character to be descrambled
-	let iterationsPerChar = 3; // Number of scramble iterations before a character is descrambled
+	let durationPerChar = 90; // Total duration for each character to be descrambled
+	let iterationsPerChar = 4; // Number of scramble iterations before a character is descrambled
 
 	onMount(() => {
 		descrambledWords = words.map((word) => {
@@ -23,9 +23,10 @@
 
 	function progressiveDescramble(targetText, duration, iterations) {
 		let currentRevealIndex = 0;
-		let display = Array.from({ length: targetText.length })
-			.map((_) => getRandomChar())
-			.join('');
+		let display = Array.from({ length: targetText.length }).map((_) => ({
+			char: getRandomChar(),
+			zoom: false
+		}));
 
 		const iterationDuration = duration / iterations;
 
@@ -36,18 +37,15 @@
 
 			let iterationCount = 0;
 			const scrambleTimer = setInterval(() => {
-				display =
-					targetText.slice(0, currentRevealIndex) +
-					getRandomChar() +
-					display.slice(currentRevealIndex + 1);
+				const randomChar = getRandomChar();
+				display[currentRevealIndex] = { char: randomChar, zoom: true };
 
 				updateDisplay(display);
 
 				iterationCount++;
 				if (iterationCount >= iterations) {
 					clearInterval(scrambleTimer);
-					display =
-						targetText.slice(0, currentRevealIndex + 1) + display.slice(currentRevealIndex + 1);
+					display[currentRevealIndex] = { char: targetText[currentRevealIndex], zoom: false };
 					updateDisplay(display);
 					currentRevealIndex++;
 					descrambleChar(); // Proceed to the next character
@@ -71,6 +69,29 @@
 
 <div class="h2 text-center">
 	{#each descrambledWords as word, index}
-		<pre class="text-3xl">{word.display}</pre>
+		<pre class="text-3xl">
+			{#each word.display as char}
+				{@html char.zoom ? `<span class="zoom-out">${char.char}</span>` : char.char}
+			{/each}
+		</pre>
 	{/each}
 </div>
+
+<style lang="postcss">
+	:global(.zoom-out) {
+		display: inline-block;
+		animation: zoomOut 0.1s ease-out;
+	}
+
+	@keyframes zoomOut {
+		from {
+			transform: scale(1.5);
+			opacity: 0.5;
+			@apply text-alert;
+		}
+		to {
+			transform: scale(1);
+			opacity: 1;
+		}
+	}
+</style>
