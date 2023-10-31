@@ -8,8 +8,8 @@
 	export let elementID: string = 'quote';
 	export { elementID as id };
 
-	let spanClassEven: string = 'scale-[2.5]';
-	let spanClassOdd: string = '-scale-[2.5]';
+	let spanClassEven: string = 'scale-[1.5]';
+	let spanClassOdd: string = 'scale-[0.5]';
 
 	let quoteElement;
 
@@ -42,7 +42,7 @@
 			}
 
 			setTimeout(() => {
-				spanNode.classList.remove('opacity-0', 'duration-500', 'scale-[2.5]', '-scale-[2.5]');
+				spanNode.classList.remove('opacity-0', 'duration-500', 'scale-[1.5]', 'scale-[0.5]');
 				spanNode.classList.add('opacity-100', 'duration-500', 'scale-100');
 			}, group * 100);
 
@@ -104,9 +104,9 @@
 
 		charElements.forEach((charSpan) => {
 			setTimeout(() => {
-				charSpan.classList.add('scale-[2.5]', 'duration-[750]');
+				charSpan.classList.add('scale-[1.5]', 'duration-[750]');
 				setTimeout(() => {
-					charSpan.classList.remove('scale-[2.5]');
+					charSpan.classList.remove('scale-[1.5]');
 					charSpan.classList.add('scale-100');
 					setTimeout(() => {
 						charSpan.classList.remove('scale-100');
