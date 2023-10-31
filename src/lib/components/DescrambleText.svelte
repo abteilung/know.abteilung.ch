@@ -1,11 +1,13 @@
-<script>
+<script lang="ts">
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
 
 	const descrambledWords = writable([]);
 
+	$: text = 'Abteilung für Gestaltung GHBM';
+
 	onMount(() => {
-		const words = 'Abteilung für Gestaltung GHBM').split(' ');
+		const words = text.split(' ');
 		descrambledWords.set(words.map((word) => progressiveDescramble(word, 50)));
 	});
 

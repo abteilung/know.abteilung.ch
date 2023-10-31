@@ -1,7 +1,10 @@
 <script lang="ts">
 	import ZoomingText from '$lib/components/ZoomingText.svelte';
 	import Glitch from '$lib/components/Glitch.svelte';
+	import DescrambleText from '$lib/components/DescrambleText.svelte';
 </script>
+
+<DescrambleText text="Ich bin ein descramble Text" />
 
 <div class="h-[80vh] bg-black text-white px-12 py-8 rounded-3xl mb-12">
 	<ZoomingText class="text-2xl" id="quote">
@@ -13,8 +16,9 @@
 		<em>GO NUTS with EMOJI</em>
 		🐳 🍔 ❤️ And also wrap <a href="#">words</a> within links.
 	</ZoomingText>
-
-	<Glitch text="Ich bin ein glitchiger Text" />
+	<div class="text-white">
+		xxx <Glitch text="Ich bin ein glitchiger Text" />
+	</div>
 </div>
 
 <div class="text-xl space-y-12">
