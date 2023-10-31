@@ -45,7 +45,7 @@
 </script>
 
 <div class="h2 text-center">
-	{#each $descrambledWords as word}
+	{#each $descrambledWords as word (index)}
 		<div>{word}</div>
 	{/each}
 </div>
