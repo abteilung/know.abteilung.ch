@@ -1,13 +1,15 @@
+require('dotenv').config();
+
 module.exports = {
 	darkMode: ['class', '[data-theme="dark"]'],
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		screens: {
-			sm: '768px',
-			md: '1024px',
-			lg: '1280px',
-			xl: '1440px',
-			'2xl': '1920px'
+			sm: process.env.BREAKPOINT_SM,
+			md: process.env.BREAKPOINT_MD,
+			lg: process.env.BREAKPOINT_LG,
+			xl: process.env.BREAKPOINT_XL,
+			'2xl': process.env.BREAKPOINT_2XL
 		},
 		container: {
 			center: true,

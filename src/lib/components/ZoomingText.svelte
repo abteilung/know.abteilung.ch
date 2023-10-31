@@ -8,6 +8,9 @@
 	export let elementID: string = 'quote';
 	export { elementID as id };
 
+	let spanClassEven: string = 'scale-[2.5]';
+	let spanClassOdd: string = '-scale-[2.5]';
+
 	let quoteElement;
 
 	function transformQuote() {
@@ -33,9 +36,9 @@
 
 			// Assign even or odd class based on the counter
 			if (spanCounter % 2 === 0) {
-				spanNode.classList.add('scale-[2.5]');
+				spanNode.classList.add(spanClassEven);
 			} else {
-				spanNode.classList.add('-scale-[2.5]');
+				spanNode.classList.add(spanClassOdd);
 			}
 
 			setTimeout(() => {
